@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="assets_backend" inherit_id="web.assets_backend" name="change_backend">
+        <xpath expr="script[last()]" position="after">
+            <style>
+                .o_main_navbar {background-color: #333;border-bottom: 0px;}
+                .o_main_navbar .show .dropdown-toggle {background-color: #666;}
+                .o_main_navbar > ul > li > a:hover, .o_main_navbar
+                > ul > li > label:hover {background-color: #999;}
+                .o_main_navbar > a:hover, .o_main_navbar > a:focus, .o_main_navbar
+                > button:hover, .o_main_navbar
+                > button:focus {background-color: #f00;color: inherit;}
+                .o_main_navbar > a:hover, .o_main_navbar > a:focus, .o_main_navbar
+                > button:hover, .o_main_navbar
+                > button:focus {background-color: #ccc;color: inherit;}
+            </style>
+        </xpath>
+    </template>
+</odoo>
