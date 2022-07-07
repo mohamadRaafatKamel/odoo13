@@ -5,14 +5,16 @@
         <field name="name">Trial Balance</field>
         <field name="model">account.trial.balance.report</field>
         <field name="inherit_id" ref="account.account_common_report_view"/>
-
         <field name="arch" type="xml">
             <data>
 
-            <field name="journal_ids" position="replace"/>
+                <field name="journal_ids" position="replace"/>
                 <xpath expr="//field[@name='target_move']" position="after">
                     <field name="display_account" widget="radio"/>
                     <newline/>
+                </xpath>
+                <xpath expr="//button[@name='check_report']" position="after">
+                    <button name="action_print_trial_bln_xlsx" string="Print Excel" type="object" default_focus="1" class="oe_highlight"/>
                 </xpath>
             </data>
 

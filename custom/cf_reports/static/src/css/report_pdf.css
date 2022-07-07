@@ -1,0 +1,14 @@
+.lvl-one{
+    background-color: #ccc
+}
+.myhide{
+    color: #fff
+}
+
+.dr-cr-border{
+    width: 150px;border: 1px solid #ccc;text-align:right;
+    }
+
+.border{
+    border: 1px solid #ccc;
+    }

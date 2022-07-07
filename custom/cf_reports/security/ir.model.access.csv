@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_account_profit_and_loss_report,access.account.profit.and.loss.report,model_account_profit_and_loss_report,,1,1,1,1

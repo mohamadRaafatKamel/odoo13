@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+     <record id="accounting_balance_sheet_report_form" model="ir.ui.view">
+        <field name="name">Balance Sheet Report</field>
+        <field name="model">balance.sheet.report</field>
+        <field name="arch" type="xml">
+
+
+        </field>
+    </record>
+
+    <record id="action_account_report_bs_wizard" model="ir.actions.act_window">
+        <field name="name">Balance Sheet</field>
+        <field name="res_model">balance.sheet.report</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="accounting_balance_sheet_report_form"/>
+        <field name="target">new</field>
+    </record>
+
+
+</odoo>

@@ -12,6 +12,7 @@ class AccountBalanceReport(models.TransientModel):
     journal_ids = fields.Many2many('account.journal', 'account_balance_report_journal_rel', 'account_id', 'journal_id',
                                    string='Journals', required=True, default=[])
 
+    #  print report pdf
     def _print_report(self, data):
         # Check that date must be filled
         if not data.get('form').get('date_from') or not data.get('form').get('date_to'):
@@ -20,3 +21,18 @@ class AccountBalanceReport(models.TransientModel):
         data = self.pre_print_report(data)
         records = self.env[data['model']].browse(data.get('ids', []))
         return self.env.ref('trial_balance_report.action_trial_balance_report').report_action(records, data=data)
+
+    #  print report Xlsx
+    def action_print_trial_bln_xlsx(self):
+        # Check that date must be filled
+        data = self.read()[0]
+        if not data.get('date_from') or not data.get('date_to'):
+            raise ValidationError("You must select date From & To")
+        mydata = {
+            'form_data': self.read()[0],
+        }
+        # print(self.read()[0])
+        # data = self.pre_print_report(data)
+        # records = self.env[data['model']].browse(data.get('ids', []))
+        return self.env.ref('trial_balance_report.action_trial_balance_xlsx_report').report_action(self, data=mydata)
+

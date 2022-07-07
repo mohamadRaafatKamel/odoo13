@@ -7,7 +7,7 @@
     'website': "",
     'category': 'Invoicing',
     'version': '13.0.0.1',
-    'depends': ['base', 'accounting_pdf_reports'],
+    'depends': ['base', 'accounting_pdf_reports', 'odoo_report_xlsx'],
     'data': [
         'reports/report_trial_balance.xml',
         'reports/report.xml',

@@ -25,5 +25,15 @@
                 paperformat="trial_balance_report.financial_reports_custom_paper_format"
         />
 
+        <report
+                id="action_trial_balance_xlsx_report"
+                model="account.trial.balance.report"
+                string="Trial Balance Excel"
+                report_type="xlsx"
+                name="trial_balance_report.report_trial_balance_document_xlsx"
+                file="trial_balance_report.report_trial_balance_document_xlsx"
+                paperformat="trial_balance_report.financial_reports_custom_paper_format"
+        />
+
     </data>
 </odoo>

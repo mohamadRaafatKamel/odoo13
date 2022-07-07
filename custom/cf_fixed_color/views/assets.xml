@@ -3,6 +3,22 @@
     <template id="assets_backend" inherit_id="web.assets_backend" name="change_backend">
         <xpath expr="script[last()]" position="after">
             <style>
+                /* box button */
+                .o_form_view .oe_button_box .oe_stat_button .o_button_icon {color: #333;}
+                .o_form_view .oe_button_box .btn.oe_stat_button > .o_stat_info .o_stat_value{color: #333;}
+
+                /* search bar */
+                .o_searchview .o_searchview_facet .o_searchview_facet_label{background-color: #333;}
+
+                /* button */
+                .btn-primary {background-color: #333;border-color: #333;}
+                .btn-primary:hover {background-color: #999;}
+                .btn-primary::onclick {background-color: #999;}
+
+                /* input requerd */
+                .o_required_modifier.o_input, .o_required_modifier .o_input{background-color: #999 !important;}
+
+                /* nav bar */
                 .o_main_navbar {background-color: #333;border-bottom: 0px;}
                 .o_main_navbar .show .dropdown-toggle {background-color: #666;}
                 .o_main_navbar > ul > li > a:hover, .o_main_navbar
@@ -14,6 +30,20 @@
                 > button:hover, .o_main_navbar
                 > button:focus {background-color: #ccc;color: inherit;}
             </style>
+
+            <script>
+
+
+                console.log($('a[class="dropdown-item"]'));
+
+
+                console.log("MRM");
+            </script>
+
         </xpath>
     </template>
 </odoo>
+<!--$("a[data-menu='documentation']").css("background-color", "red");-->
+<!--Documentation-->
+
+<!--                alert("Hello! I am an alert box!!");-->

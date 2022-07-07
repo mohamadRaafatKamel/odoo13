@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_profit_and_loss_document_pdf">
+        <t t-call="web.html_container">
+            <t t-set="data_report_margin_top" t-value="12"/>
+            <t t-set="data_report_header_spacing" t-value="9"/>
+            <t t-set="data_report_dpi" t-value="110"/>
+            <t t-set="data_report_orientation" t-value="Landscape"/>
+            <t t-call="web.internal_layout">
+                <div class="page">
+
+                    <link rel="stylesheet" type="text/scss"
+                          href="/cf_reports/static/src/css/report_pdf.css"/>
+
+                    <h2 class="text-center">
+                        <span t-esc="res_company.name"/>: Profit and Loss
+                    </h2>
+
+                    <div class="row mt32">
+                        <div class="col-4">
+                            <p>
+                                <t t-if="data['date_from']">
+                                    <strong>Date from :</strong>
+                                    <span t-esc="data['date_from']"/>
+                                    <br/>
+                                </t>
+                            </p>
+                        </div>
+                        <div class="col-4">
+                            <p>
+                                <t t-if="data['date_to']">
+                                    <strong>Date to :</strong>
+                                    <span t-esc="data['date_to']"/>
+                                </t>
+                            </p>
+                        </div>
+                    </div>
+
+                    <table class="table table-sm table-reports">
+                        <col width="10%"/>
+                        <col width="60%"/>
+                        <col width="30%"/>
+                        <thead>
+                            <tr>
+                                <th class="dr-cr-border text-center">Code</th>
+                                <th class="dr-cr-border text-center">Name</th>
+                                <th class="dr-cr-border text-center">Balance</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- -->
+                            <tr class="lvl-one">
+                                <td></td>
+                                <td>Revenues</td>
+                                <td class="text-right">
+                                    <span t-att-style="style" t-esc="account_sum['revenues']"
+                                          t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                </td>
+                            </tr>
+                            <tr t-foreach="account_pl[0]" t-as="account">
+                                <td>
+                                    <span t-att-style="style" t-esc="account['code']"/>
+                                </td>
+                                <td>
+                                    <span class="myhide">---</span>
+                                    <span t-att-style="style" t-esc="account['name']"/>
+                                </td>
+                                <td class="text-right">
+                                    <span t-att-style="style" t-esc="account['balance']"
+                                          t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                </td>
+                            </tr>
+                            <!-- -->
+                            <tr class="lvl-one">
+                                <td></td>
+                                <td>Other Revenues</td>
+                                <td class="text-right">
+                                    <span t-att-style="style" t-esc="account_sum['other_revenues']"
+                                          t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                </td>
+                            </tr>
+                            <tr t-foreach="account_pl[1]" t-as="account">
+                                <td>
+                                    <span t-att-style="style" t-esc="account['code']"/>
+                                </td>
+                                <td>
+                                    <span class="myhide">---</span>
+                                    <span t-att-style="style" t-esc="account['name']"/>
+                                </td>
+                                <td class="text-right">
+                                    <span t-att-style="style" t-esc="account['balance']"
+                                          t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                </td>
+                            </tr>
+                            <!-- -->
+                            <tr class="lvl-one">
+                                <td></td>
+                                <td>Total Revenues</td>
+                                <td class="text-right">
+                                    <span t-att-style="style" t-esc="account_sum['total_revenues']"
+                                          t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                </td>
+                            </tr>
+                            <!-- -->
+                            <tr class="lvl-one">
+                                <td></td>
+                                <td>Cost Of Revenues</td>
+                                <td class="text-right">
+                                    <span t-att-style="style" t-esc="account_sum['cost_of_revenues']"
+                                          t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                </td>
+                            </tr>
+                            <tr t-foreach="account_pl[2]" t-as="account">
+                                <td>
+                                    <span t-att-style="style" t-esc="account['code']"/>
+                                </td>
+                                <td>
+                                    <span class="myhide">---</span>
+                                    <span t-att-style="style" t-esc="account['name']"/>
+                                </td>
+                                <td class="text-right">
+                                    <span t-att-style="style" t-esc="account['balance']"
+                                          t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                </td>
+                            </tr>
+                            <!-- -->
+                            <tr class="lvl-one">
+                                <td></td>
+                                <td>Gross Profit</td>
+                                <td class="text-right">
+                                    <span t-att-style="style" t-esc="account_sum['gross_profit']"
+                                          t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                </td>
+                            </tr>
+                            <!-- -->
+                            <tr class="lvl-one">
+                                <td></td>
+                                <td>General And Administrative Expenses</td>
+                                <td class="text-right">
+                                    <span t-att-style="style" t-esc="account_sum['general_expenses']"
+                                          t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                </td>
+                            </tr>
+                            <tr t-foreach="account_pl[3]" t-as="account">
+                                <td>
+                                    <span t-att-style="style" t-esc="account['code']"/>
+                                </td>
+                                <td>
+                                    <span class="myhide">---</span>
+                                    <span t-att-style="style" t-esc="account['name']"/>
+                                </td>
+                                <td class="text-right">
+                                    <span t-att-style="style" t-esc="account['balance']"
+                                          t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                </td>
+                            </tr>
+                            <!-- -->
+                            <tr class="lvl-one">
+                                <td></td>
+                                <td>Depreciation Expenses</td>
+                                <td class="text-right">
+                                    <span t-att-style="style" t-esc="account_sum['depreciation_expenses']"
+                                          t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                </td>
+                            </tr>
+                            <tr t-foreach="account_pl[4]" t-as="account">
+                                <td>
+                                    <span t-att-style="style" t-esc="account['code']"/>
+                                </td>
+                                <td>
+                                    <span class="myhide">---</span>
+                                    <span t-att-style="style" t-esc="account['name']"/>
+                                </td>
+                                <td class="text-right">
+                                    <span t-att-style="style" t-esc="account['balance']"
+                                          t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                </td>
+                            </tr>
+                            <!-- -->
+                            <tr class="lvl-one">
+                                <td></td>
+                                <td>Selling And Marketing Expenses</td>
+                                <td class="text-right">
+                                    <span t-att-style="style" t-esc="account_sum['selling_expenses']"
+                                          t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                </td>
+                            </tr>
+                            <tr t-foreach="account_pl[5]" t-as="account">
+                                <td>
+                                    <span t-att-style="style" t-esc="account['code']"/>
+                                </td>
+                                <td>
+                                    <span class="myhide">---</span>
+                                    <span t-att-style="style" t-esc="account['name']"/>
+                                </td>
+                                <td class="text-right">
+                                    <span t-att-style="style" t-esc="account['balance']"
+                                          t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                </td>
+                            </tr>
+                            <!-- -->
+                            <tr class="lvl-one">
+                                <td></td>
+                                <td>Financing Expenses</td>
+                                <td class="text-right">
+                                    <span t-att-style="style" t-esc="account_sum['financing_expenses']"
+                                          t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                </td>
+                            </tr>
+                            <tr t-foreach="account_pl[6]" t-as="account">
+                                <td>
+                                    <span t-att-style="style" t-esc="account['code']"/>
+                                </td>
+                                <td>
+                                    <span class="myhide">---</span>
+                                    <span t-att-style="style" t-esc="account['name']"/>
+                                </td>
+                                <td class="text-right">
+                                    <span t-att-style="style" t-esc="account['balance']"
+                                          t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                </td>
+                            </tr>
+                            <!-- -->
+                            <tr class="lvl-one">
+                                <td></td>
+                                <td>Total Expenses</td>
+                                <td class="text-right">
+                                    <span t-att-style="style" t-esc="account_sum['total_expenses']"
+                                          t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                </td>
+                            </tr>
+                            <!-- -->
+                            <tr class="lvl-one">
+                                <td></td>
+                                <td>Net Income</td>
+                                <td class="text-right">
+                                    <span t-att-style="style" t-esc="account_sum['net_income']"
+                                          t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                </td>
+                            </tr>
+                            <!-- -->
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>
